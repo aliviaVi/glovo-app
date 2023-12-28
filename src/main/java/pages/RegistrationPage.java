@@ -28,7 +28,7 @@ public class RegistrationPage extends Page {
     private static final String movedBusinessString = "Ні";
     private static final By checkBoxPrivacy  = By.xpath("(//input[@id='privacy'])[1]");
     private static final By submittButton = By.xpath("//*[@id='landing_submitted']");
-    private static final By errorMessage  = By.xpath("//p[@class = 'error']");
+    private static final By errorMessage  =By.xpath("//div[@class = 'phoneWrapper']/p"); // By.xpath("//p[@class = 'error']");
 
 
 
@@ -40,9 +40,9 @@ public class RegistrationPage extends Page {
         $(surname).setValue(SURNAME);
         $(email).setValue(EMAIL);
         $(phoneCodeCountry).selectOptionByValue(countryCode);
-        $(phone).setValue(PHONE);
+        $(phone).setValue(INCORRECT_PHONE);
         $(businessType).selectOptionByValue(businessTypeString);
-        $(movedBusiness).selectOption(movedBusinessString);
+       // $(movedBusiness).selectOption(movedBusinessString);
         $(checkBoxPrivacy).click();
 
     }
