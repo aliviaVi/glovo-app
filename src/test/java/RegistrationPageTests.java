@@ -1,6 +1,7 @@
 
 import com.codeborne.selenide.Configuration;
 import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import pages.RegistrationPage;
@@ -20,23 +21,30 @@ public class RegistrationPageTests extends TestBase {
 
     SignUpLocalizationPage signUpLocalizationPage;
 
+    @BeforeEach
+    public void openRegisterPage(){
+       registrationPage = open(BASE_URL, RegistrationPage.class);
+       acceptCookies();
+    }
+
     @Test
     public void acceptCookiesTest() {
-        registrationPage = open(BASE_URL, RegistrationPage.class);
-        acceptCookies();
         $(cookiesBanner).shouldBe(hidden);
-
     }
 
     @Test
     public void registrationTest() throws InterruptedException {
-        registrationPage = open(BASE_URL, RegistrationPage.class);
+      //  registrationPage = open(BASE_URL, RegistrationPage.class);
         acceptCookies();
         registrationPage.fillInRegistrationData();
-
         signUpLocalizationPage = registrationPage.clickOnSubmittButton();
 
         $(signUpLocalizationPage.returnForm()).shouldBe(visible);
         // Assert.assertTrue(signUpLocalizationPage.returnForm().isDisplayed());
     }
+@Test
+    public void incorrectFilloutFormTest(){
+
+}
+
 }
