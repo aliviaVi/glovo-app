@@ -19,8 +19,9 @@ public class RegistrationPage extends Page {
     private static final By email = By.xpath("(//input[@placeholder='Електронна пошта'])[1]");
     private static final By phoneCodeCountry = By.xpath("(//select[@id='prefix'])[1]");
     private static final By phone = By.xpath("(//input[@placeholder='Телефон'])[1]");
-    private static final By businessType = By.xpath("//*[@id='vertical']");
-    private static final By movedBusiness = By.xpath("(//option[@value='false'][contains(text(),'Ні')])[1]");
+    private static final By businessType = By.id("vertical"); //By.xpath("//*[@id='vertical']");
+    private static final By businessTypeFlowers = By.xpath("//*[@id='vertical']/option[5]");
+    private static final By movedBusiness = By.id("glovoActs");//"(//option[@value='false'][contains(text(),'Ні')])[1]");
     private static final By checkBoxPrivacy  = By.xpath("(//input[@id='privacy'])[1]");
     private static final By submittButton = By.xpath("//*[@id='landing_submitted']");
 
@@ -35,8 +36,8 @@ public class RegistrationPage extends Page {
         $(email).setValue(EMAIL);
         $(phoneCodeCountry).selectOptionByValue(countryCode);
         $(phone).setValue(PHONE);
-        $(businessType).click();
-        $(movedBusiness).click();
+        $(businessType).selectOption("Магазин квітів");
+        $(movedBusiness).selectOption("Ні");
         $(checkBoxPrivacy).click();
 
     }

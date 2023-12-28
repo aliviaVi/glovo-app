@@ -11,7 +11,7 @@ public abstract class Page {
     public static String NAME = String.valueOf(faker.name().firstName());
     public static String SURNAME = faker.name().lastName();
     public static String EMAIL = "test@gmail.com";
-    public static String PHONE = faker.phoneNumber().phoneNumber();
+    public static String PHONE = "626 87 87 87"; //faker.phoneNumber().phoneNumber();
 
     public static String ADDRESS = faker.address().streetAddress();
 
